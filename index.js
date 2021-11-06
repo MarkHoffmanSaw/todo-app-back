@@ -1,39 +1,15 @@
 const express = require("express");
-const app = express();
-const cors = require("cors");
-const pool = require("./db");
+const userRouter = require("./routes/user.routes.js");
 
-// middleware
-app.use(cors());
+const PORT = process.env.PORT || 8080;
+
+const app = express();
+
 app.use(express.json());
 
-//////////////////// *** Routes *** ///////////////////
+// api - params1, useRouter - params2 роутер с данными
+app.use("/api", userRouter);
 
-// Create a project
-
-app.post("/projects", async (req, res) => {
-  try {
-    const { name, description, user_id } = req.body;
-    const newProject = await pool.query(
-      `INSERT INTO users (name, description, user_id) VALUES($1,$1,$1)`,
-      [name, description, user_id] // instead of $1
-    );
-
-    res.json(newProject);
-    console.log(newProject);
-  } catch (err) {
-    console.error(err.message);
-  }
-});
-
-// Get all projects
-
-// Get a project
-
-// Update a project
-
-// Delete a project
-
-app.listen(5000, () => {
-  console.log("Server has started on port 5000");
+app.listen(PORT, () => {
+  console.log(`Server started on port ${PORT}`);
 });
