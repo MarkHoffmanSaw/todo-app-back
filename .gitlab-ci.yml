@@ -14,7 +14,7 @@
 # For more information, see: https://docs.gitlab.com/ee/ci/yaml/index.html#stages
 variables:
   REGISTRY_USERNAME: markhoffman
-  REGITSRY_PASSWORD: deobald3064924
+  REGITSRY_PASSWORD: Pizdaty911
 
 stages:          # List of stages for jobs, and their order of execution
   - build
