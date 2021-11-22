@@ -1,6 +1,7 @@
-const Pool = require("pg").Pool;
+import pgModule from "pg";
+const { Pool } = pgModule;
 
-const pool = new Pool({
+const query = new Pool({
   user: "todo",
   password: "deobald3064924",
   host: "todo-db",
@@ -8,4 +9,4 @@ const pool = new Pool({
   database: "todo_db",
 });
 
-module.exports = pool;
+export default query;
